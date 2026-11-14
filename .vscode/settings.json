@@ -21,7 +21,6 @@
         "src",
         "test"
     ],
-    "java.configuration.runtimes": [{"path":"C:\\Users\\abdir\\Documents\\Codex\\2026-11-13\\https-github-com-jrg94-portfolio-project\\work\\jdk-21.0.13.0.2+1","default":true,"name":"JavaSE-21"}],
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar"
