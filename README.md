@@ -1,89 +1,37 @@
-# Portfolio Project
+# Scorekeepr
 
-The purpose of this repo is to provide a framework for creating your own
-component in the software sequence discipline. If you were unsure whether
-or not to make your own, consider the following testimonial:
+A two-team Java scoreboard with live score entry and a season report. The [project reflection](doc/DIRECTIONS.md#assignment-reflection) accompanies the implementation.
 
-> I really enjoyed the portfolio project! It gave me a stronger understanding
-> of the OSU software discipline while also giving me the flexibility to
-> design something that reflected my interests. This made the experience
-> rewarding and enjoyable as I created a product I was proud of!
+## Component design
 
-## Recommended Steps to Get Started
+ScoreKeeperKernel extends OSU Standard and defines score and award.
+ScoreKeeper extends ScoreKeeperKernel with isTied and margin.
+ScoreKeeperSecondary implements ScoreKeeper using only public operations.
+ScoreKeeper1 extends ScoreKeeperSecondary and owns the two stored scores.
+The array keeps lookup and scoring constant-time. No array escapes to callers.
 
-When starting your portfolio project, the following steps should make your life
-a bit easier.
+## Verification plan
 
-### Step 1: Create a Repo From This Template
+| Behavior | Inputs and expected observations |
+| --- | --- |
+| Construction and scoring | Start at 0-0. Award zero, then award twice to either team. Only the selected side gains points. |
+| Numeric boundaries | Reach the maximum int. Another point and a negative award must fail and preserve the score. |
+| Comparisons | Check leads from each perspective, ties at zero and at the maximum, and the maximum positive and negative margins. |
+| Standard operations | Create from a populated board, clear twice, transfer onto a populated board, then mutate the source. Check independence, replacement, source reset, empty transfer, and rejected self or null transfer. |
+| Common methods | Check reflexivity, equal values and hashes, unequal home or away scores, null and unrelated types, and the displayed score. |
+| Live game | Try a malformed command, negative points, both teams scoring, then Q. Valid entries must still work after an error. |
+| Season analysis | Aggregate two home wins, a loss, and a draw. Expect the W-L-T record 2-1-1. |
 
-<!-- TODO: use GitHub to create a repo from this template -->
+## Reproducing the checks
 
-Assuming you're reading this README from GitHub, you can make use of this
-repo by clicking the `Use this template` button in the top-right corner of
-this page. If you can't find the button, [this link][use-this-template]
-should work as well. Personally, I would recommend using the
-`Create a new repository` option, which will allow you to name the
-repository after your component. Given that you will be submitting pull
-requests to me through Carmen, you'll want to make sure your repository
-is public. Then, you can click `Create repository`. After that, you can
-go through all the usual steps of cloning a repository on your system to
-get to work. I use GitHub Desktop to clone projects, and it has a nice
-feature of letting you open a repo directly in VSCode from the
-`Repository` menu.
+Use JDK 21, the OSU components library and JUnit Platform Console Standalone
+1.11.4. This local copy includes both jars under lib. With JDK 21 on PATH,
+run these commands in PowerShell from this folder.
 
-### Step 2: Install Recommended Plugins
-
-<!-- TODO: install recommended plugins and delete this comment -->
-
-When you open VSCode with this project, you should get a notification in the
-bottom right corner that there are some recommended extensions to install.
-Click install all. If you ignored this message or it never came up, feel free
-to press CTRL+SHIFT+P and type "Show Recommended Extensions". Install all of the
-extensions listed.
-
-### Step 3: Install the Latest JDK
-
-<!-- TODO: install latest JDK and delete this comment -->
-
-If you do not have an available JDK on your system, you may be prompted to
-install one by VSCode. The default seems to be Red Hat's OpenJDK, which seems to
-require you to register for an account or to install on the command line.
-Regardless, there is no mac support. As a result, I would just recommend
-installing the latest JDK [directly from Oracle's site][jdk-downloads].
-
-### Step 4: Add Key Libraries to Project
-
-<!-- TODO: add key libraries to project and delete this comment -->
-
-As you are probably all aware at this point, you need the components jar to get
-anything running. My advice is to [download it from here][components-jar]. Then,
-drop it into the `lib` folder in the project. Git automatically ignores anything
-you put here by default, so don't worry about committing it to version control.
-
-Similarly, you will need the testing APIs (e.g., JUnit). Perhaps the easiest way
-to include them in your project is to click the beaker symbol in the left
-sidebar; it's right below the extensions button which looks like four squares.
-If you do not see this button, try creating a Java file in `src`. From there,
-you can click "Enable Java Tests" and then click "JUnit" from the
-dropdown. That's it! You should now see the two JUnit libraries in the lib
-folder.
-
-**Note**: if you're using VSCode for class projects, you might be wondering
-why you never had to do this. In general, it's bad practice to commit binaries
-to version control. However, we have no way of managing dependencies with the
-custom `components.jar`, so I included them directly in the template. I did not
-include them here, so you could see how it might be done from scratch. If at any
-point you're struggling with Step 3, just copy the lib folder from the monorepo
-template.
-
-## Next Steps
-
-<!-- TODO: navigate to doc/DIRECTIONS.md and delete this comment -->
-
-Now that you have everything setup, you can begin crafting your component. All
-of the directions you need to get started are in the
-[DIRECTIONS.md](doc/DIRECTIONS.md) file under the docs folder.
-
-[components-jar]: https://cse22x1.engineering.osu.edu/common/components.jar
-[jdk-downloads]: https://www.oracle.com/java/technologies/downloads/
-[use-this-template]: https://github.com/new?template_name=portfolio-project&template_owner=jrg94
+```powershell
+New-Item -ItemType Directory -Force bin | Out-Null
+javac -cp 'lib/*' -d bin src/*.java test/*.java
+java -jar lib/junit.jar execute -cp 'bin;lib/components.jar' --scan-class-path
+java -cp 'bin;lib/*' GameNight
+java -cp 'bin;lib/*' SeasonReport
+```
