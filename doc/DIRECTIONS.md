@@ -13,19 +13,19 @@ In this assignment, you are tasked with creating a software component from
 scratch using OSU's discipline as follows:
 
 - Create the kernel and enhanced interfaces as described in the
-   [component interfaces docs](03-component-interfaces/03-component-interfaces.md)
+   [component interfaces docs](https://github.com/jrg94/portfolio-project/blob/f9ae52202b14d183950e6381cad269a5054023a9/doc/03-component-interfaces/03-component-interfaces.md)
 - Create the secondary abstract class as described in the
-   [component abstract class docs](04-component-abstract-class/04-component-abstract-class.md)
+   [component abstract class docs](https://github.com/jrg94/portfolio-project/blob/f9ae52202b14d183950e6381cad269a5054023a9/doc/04-component-abstract-class/04-component-abstract-class.md)
 - Create one kernel implementation as described in the
-   [component kernel implementation docs](05-component-kernel-implementation/05-component-kernel-implementation.md)
+   [component kernel implementation docs](https://github.com/jrg94/portfolio-project/blob/f9ae52202b14d183950e6381cad269a5054023a9/doc/05-component-kernel-implementation/05-component-kernel-implementation.md)
 
 In addition, you must complete the following tasks:
 
 - Write a systematic test suite for all methods in each interface as well as the
   common methods as described in the
-  [finishing touches doc](06-component-finishing-touches/06-component-finishing-touches.md)
+  [finishing touches doc](https://github.com/jrg94/portfolio-project/blob/f9ae52202b14d183950e6381cad269a5054023a9/doc/06-component-finishing-touches/06-component-finishing-touches.md)
 - Write two qualitatively different use cases for your component as described in the
-  [finishing touches doc](06-component-finishing-touches/06-component-finishing-touches.md)
+  [finishing touches doc](https://github.com/jrg94/portfolio-project/blob/f9ae52202b14d183950e6381cad269a5054023a9/doc/06-component-finishing-touches/06-component-finishing-touches.md)
 
 Finally, you may take your component above and beyond expectations by
 completing the following tasks:
@@ -51,7 +51,7 @@ To complete the assignment, you must do the following **in order**:
 
 1. Review this entire document from top-to-bottom
    - Make sure you have read the rubric and know how you're being assessed
-2. Use this repo as a template, as described in the main [README](../README.md)
+2. Use this repo as a template, as described in the main [README](https://github.com/jrg94/portfolio-project/blob/f9ae52202b14d183950e6381cad269a5054023a9/README.md)
 3. Clone this repo to your machine
 4. Create a new branch from `main` and complete all of your work on it
    - `main` must only contain the template files at the time of submission
@@ -76,18 +76,18 @@ a few sentences per question would be ideal.
 > complete the portfolio project, how much better (or worse) do you think you
 > understand software development and why?
 
-<!-- TODO: discuss -->
+I used to think a scoreboard was mostly about adding points. Deciding what should happen when a point would push a score past the integer limit made me see how much work goes into a small feature. Someone using the scoreboard needs to know whether the old score is still safe after an error.
 
 > Also, did the portfolio project surface any gaps in your own knowledge of
 > software development. If so, what are those gaps and how did you address them?
 
-<!-- TODO: discuss -->
+The part I had trouble with was understanding what transferFrom promised. I drew two boards, moved the score from one to the other, and then added a point to the emptied board. That last step helped me see why a test has to check that each board can change independently afterward.
 
 > Finally, as a part of completing the portfolio project, to what extent has
 > your perspective of software development changed, if at all? In other words,
 > is software development something you still enjoy? If not, why not?
 
-<!-- TODO: discuss -->
+I still enjoy programming, especially when I can try a feature the way someone else would. Entering a bad command during a game and then continuing to keep score felt more satisfying than just getting the program to compile.
 
 > One of the challenges of completing the portfolio project is picking up a lot
 > of skills on your own. Some of these skills are, of course, software skills.
@@ -95,25 +95,26 @@ a few sentences per question would be ideal.
 > this process. Therefore, the first question is what skills did you pick up
 > through this process?
 
-<!-- TODO: discuss -->
+I got better at choosing test cases. For example, adding one point to an empty board and adding one point to a board already at the maximum look like almost the same action, but they should have very different results. I also practiced explaining those expectations in plain language.
 
 > The follow-up question is: could you rephrase these skills you picked up
 > as bullet points that you could put on a resume? Try it below.
 
-<!-- TODO: discuss -->
+- Built a Java scoreboard that supports live game entry and summarizes results across a season.
+- Tested scoring limits and transfer behavior with JUnit, including checks that a rejected update preserves the score.
 
 > Next, how has working on this project affected your career trajectory?
 > In other words, do you now hate the topic you picked? Or, are you even more
 > interested in it? Both outcomes are valuable to your personal development.
 
-<!-- TODO: discuss -->
+This project made me more interested in building tools that people use during live events. During a game, the person entering points needs quick feedback and a way to recover from a typo. I would like to explore that side of software development further.
 
 > Finally, consider the skills you've picked up and your current career
 > trajectory. What are some things you could do to continue on your
 > career trajectory? Also, who are some mentors you could contact to help
 > you stay on your path?
 
-<!-- TODO: discuss -->
+My next step would be to let someone keep score for a short game without explaining the commands first. I would watch where they hesitate, then ask a course TA to review one change I propose and the test I would use to check it.
 
 ## Assignment Advice
 
@@ -140,7 +141,7 @@ second midterm, where you can submit your completed component for an initial
 grade. Any submissions after this point will not have a chance to resubmit.
 
 Finally, if you have no idea where to start, consider checking out the
-[part 1 docs](01-component-brainstorming/01-component-brainstorming.md).
+[part 1 docs](https://github.com/jrg94/portfolio-project/blob/f9ae52202b14d183950e6381cad269a5054023a9/doc/01-component-brainstorming/01-component-brainstorming.md).
 There, you'll find a link to an article that includes project ideas. It is
 recommended to follow the instructions in parts 1 through 6 anyway (even the
 proof of concept for your own sanity), but you can continue to ignore the
